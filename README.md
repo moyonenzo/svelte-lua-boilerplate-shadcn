@@ -13,11 +13,12 @@ by restarting the resource, instead of having to make a production build.
 This version of the boilerplate is meant for the CfxLua runtime.
 
 ## Requirements
-* [Node > v10.6](https://nodejs.org/en/)
-* [pnpm](https://pnpm.io/installation) (Highly recommended over yarn or npm)
 
-*A basic understanding of the modern web development workflow. If you don't 
-know this yet, Svelte might not be for you just yet.*
+- [Node > v10.6](https://nodejs.org/en/)
+- [pnpm](https://pnpm.io/installation) (Highly recommended over yarn or npm)
+
+_A basic understanding of the modern web development workflow. If you don't
+know this yet, Svelte might not be for you just yet._
 
 ## Getting Started
 
@@ -45,6 +46,7 @@ hide it you can use `visibility.set()`, visibility being an exported writable
 from the Svelte store.
 
 Before being able to use the writable you must first import it from `store/stores.ts`
+
 ```svelte
 <button on:click={() => visibility.set(false)}>
   Exit
@@ -57,19 +59,19 @@ This is a custom function that is designed to intercept and handle
 messages dispatched by the game scripts. This is the primary
 way of creating passive listeners.
 
-
-*Note: For now handlers can only be registered a single time. I haven't
-come across a personal usecase for a cascading event system*
+_Note: For now handlers can only be registered a single time. I haven't
+come across a personal usecase for a cascading event system_
 
 **Usage**
+
 ```svelte
 <script lang="ts">
   let characterName: string;
-  
+
   useNuiEvent<string>('myAction', (data) => {
     // the first argument to the handler function
     // is the data argument sent using SendNUIMessage
-    
+
     // do whatever logic u want here
     characterName = data;
   })
@@ -81,15 +83,16 @@ come across a personal usecase for a cascading event system*
 **fetchNui**
 
 This is a simple NUI focused wrapper around the standard `fetch` API.
-This is the main way to accomplish active NUI data fetching 
+This is the main way to accomplish active NUI data fetching
 or to trigger NUI callbacks in the game scripts.
 
 When using this, you must always at least callback using `{}`
 in the gamescripts.
 
-*This can be heavily customized to your use case*
+_This can be heavily customized to your use case_
 
 **Usage**
+
 ```svelte
 <script lang="ts">
   let clientCoords: {x: number; y: number; z: number};
@@ -114,6 +117,7 @@ as if they were dispatched by the game scripts. **It will only fire if the curre
 environment is a regular browser and not CEF**
 
 **Usage**
+
 ```ts
 // This will target the useNuiEvent function registered with `setVisible`
 // and pass them the data of `true`
@@ -131,11 +135,10 @@ environment is a regular browser and not CEF**
 
 These are small but useful included utilities.
 
-* `isEnvBrowser()` - Will return a boolean indicating if the current 
+- `isEnvBrowser()` - Will return a boolean indicating if the current
   environment is a regular browser. (Useful for logic in development)
 
 ## Development Workflow
-
 
 **Hot builds**
 When developing in-game you can use the hot build system by running
@@ -145,6 +148,7 @@ that is required is a resource restart to update the game script.
 For development in browser you can just run `dev` instead.
 
 **Usage**
+
 ```sh
 pnpm dev
 ```
@@ -162,4 +166,5 @@ pnpm build
 
 ## Additional Notes
 
+Shadcn library documentation [shadcn-svelte](https://www.shadcn-svelte.com/)  
 Need further support? Join our [Discord](https://discord.com/invite/HYwBjTbAY5)!
